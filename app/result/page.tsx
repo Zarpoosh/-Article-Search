@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import journalData from "@/data/mockData";
+import QRCodeGenerator from "../components/QRCodeGenerator/QRCodeGenerator";
 
 interface Journal {
   rank: number;
@@ -18,6 +19,7 @@ interface Journal {
   immediacyIndex: number;
   eigenfactorScore: number;
   articleInfluenceScore: number;
+  link:string;
 }
 
 export default function Result() {
@@ -30,7 +32,7 @@ export default function Result() {
     // استفاده از setTimeout برای جلوگیری از synchronous setState
     const timer = setTimeout(() => {
       if (issn) {
-        const foundJournal = journalData.find(j => j.issn === issn);
+        const foundJournal = journalData.find((j) => j.issn === issn);
         setJournal(foundJournal || null);
         setLoading(false);
       } else {
@@ -62,11 +64,11 @@ export default function Result() {
       <div className="min-h-screen bg-zinc-50 dark:bg-black flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            مقاله‌ای با ISSN 
-            <span className="text-fuchsia-500"> {issn}</span> 
-            یافت نشد
+            Article not found with this
+            <span className="text-fuchsia-500 m-2"> {issn}</span>
+            ISSN Number :(
           </h1>
-          <Link 
+          <Link
             href="/"
             className="inline-flex items-center gap-2 bg-fuchsia-500 text-white px-6 py-3 rounded-lg hover:bg-fuchsia-600 transition-colors"
           >
@@ -78,18 +80,54 @@ export default function Result() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black p-8">
+    <div className="min-h-screen bg-zinc-50 dark:bg-black p-8 flex">
+      <QRCodeGenerator 
+          articleLink={journal.link}
+          articleTitle={journal.link}
+        />
       <div className="max-w-2xl mx-auto">
-        <Link href="/" className="text-fuchsia-500 mb-4 inline-block">← Back</Link>
+        <Link href="/" className="text-fuchsia-500 mb-4 inline-block">
+          ← Back
+        </Link>
         <h1 className="text-3xl font-bold mb-4">{journal.fullTitle}</h1>
         <div className=" p-6 rounded-lg shadow">
-          <p><strong>ISSN:</strong> {journal.issn}</p>
-          <p><strong>Rank:</strong> {journal.rank}</p>
-          <p><strong>Category:</strong> {journal.category}</p>
-          <p><strong>Total Cites:</strong> {journal.totalCites}</p>
-          <p><strong>Impact Factor:</strong> {journal.journalImpactFactor}</p>
+          <p>
+            <strong>ISSN:</strong> {journal.issn}
+          </p>
+          <p>
+            <strong>Rank:</strong> {journal.rank}
+          </p>
+          <p>
+            <strong>Category:</strong> {journal.category}
+          </p>
+          <p>
+            <strong>Total Cites:</strong> {journal.totalCites}
+          </p>
+          <p>
+            <strong>Impact Factor:</strong> {journal.journalImpactFactor}
+          </p>
+          <p>
+            <strong>impactFactorWithoutSelfCites:</strong>{" "}
+            {journal.impactFactorWithoutSelfCites}
+          </p>
+          <p>
+            <strong>fiveYearImpactFactor:</strong>{" "}
+            {journal.fiveYearImpactFactor}
+          </p>
+          <p>
+            <strong>immediacyIndex:</strong> {journal.immediacyIndex}
+          </p>
+          <p>
+            <strong>eigenfactorScore:</strong> {journal.eigenfactorScore}
+          </p>
+          <p>
+            <strong>articleInfluenceScore:</strong>{" "}
+            {journal.articleInfluenceScore}
+          </p>
         </div>
+
       </div>
+        
     </div>
   );
 }
