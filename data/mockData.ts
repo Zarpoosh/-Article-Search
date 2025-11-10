@@ -1,0 +1,60 @@
+export const journalData = [
+  {
+    rank: 1,
+    fullTitle: "CAACASCER_DORSAL FOR CLEAR-DARK",
+    abbreviatedTitle: "CAACASCER-FLUSI",
+    category: "ONCELLORY",
+    issn: "0009-2022",
+    totalCites: 28870,
+    journalImpactFactor: 344.585,
+    impactFactorWithoutSelfCites: 244.298,
+    fiveYearImpactFactor: 161.803,
+    immediacyIndex: 49.172,
+    eigenfactorScore: 0.00000,
+    articleInfluenceScore: 40.50
+  },
+  {
+    rank: 2,
+    fullTitle: "NEW ENGLAND JOURNAL OF MEDICINE",
+    abbreviatedTitle: "NEW ENG J MED",
+    category: "MEDICINE, GENERAL & INTERNAL",
+    issn: "0008-6793",
+    totalCites: 332896,
+    journalImpactFactor: 79.258,
+    impactFactorWithoutSelfCites: 79.537,
+    fiveYearImpactFactor: 67.512,
+    immediacyIndex: 16.777,
+    eigenfactorScore: 0.70000,
+    articleInfluenceScore: 29.423
+  },
+  {
+    rank: 3,
+    fullTitle: "LANCET",
+    abbreviatedTitle: "LANCET",
+    category: "MEDICINE, GENERAL & INTERNAL",
+    issn: "0110-0746",
+    totalCites: 223209,
+    journalImpactFactor: 53.254,
+    impactFactorWithoutSelfCites: 51.099,
+    fiveYearImpactFactor: 57.666,
+    immediacyIndex: 13.03,
+    eigenfactorScore: 0.452140,
+    articleInfluenceScore: 21.006
+  },
+  {
+    rank: 4,
+    fullTitle: "CHEMICAL REVIEWS",
+    abbreviatedTitle: "CHEM REV",
+    category: "CHEMISTRY, MULTIDISCIPLINARY",
+    issn: "0009-2665",
+    totalCites: 175096,
+    journalImpactFactor: 52.613,
+    impactFactorWithoutSelfCites: 52.000,
+    fiveYearImpactFactor: 54.198,
+    immediacyIndex: 23.157,
+    eigenfactorScore: 0.500000,
+    articleInfluenceScore: 15.981
+  }
+];
+
+export default journalData;
