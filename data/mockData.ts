@@ -10,8 +10,9 @@ export const journalData = [
     impactFactorWithoutSelfCites: 244.298,
     fiveYearImpactFactor: 161.803,
     immediacyIndex: 49.172,
-    eigenfactorScore: 0.00000,
-    articleInfluenceScore: 40.50
+    eigenfactorScore: 0.0,
+    articleInfluenceScore: 40.5,
+    link: "https://github.com/Zarpoosh/Generate-qrcode/blob/master/js/main.js",
   },
   {
     rank: 2,
@@ -24,8 +25,9 @@ export const journalData = [
     impactFactorWithoutSelfCites: 79.537,
     fiveYearImpactFactor: 67.512,
     immediacyIndex: 16.777,
-    eigenfactorScore: 0.70000,
-    articleInfluenceScore: 29.423
+    eigenfactorScore: 0.7,
+    articleInfluenceScore: 29.423,
+    link: "google.com",
   },
   {
     rank: 3,
@@ -38,8 +40,9 @@ export const journalData = [
     impactFactorWithoutSelfCites: 51.099,
     fiveYearImpactFactor: 57.666,
     immediacyIndex: 13.03,
-    eigenfactorScore: 0.452140,
-    articleInfluenceScore: 21.006
+    eigenfactorScore: 0.45214,
+    articleInfluenceScore: 21.006,
+    link: "google.com",
   },
   {
     rank: 4,
@@ -49,12 +52,13 @@ export const journalData = [
     issn: "0009-2665",
     totalCites: 175096,
     journalImpactFactor: 52.613,
-    impactFactorWithoutSelfCites: 52.000,
+    impactFactorWithoutSelfCites: 52.0,
     fiveYearImpactFactor: 54.198,
     immediacyIndex: 23.157,
-    eigenfactorScore: 0.500000,
-    articleInfluenceScore: 15.981
-  }
+    eigenfactorScore: 0.5,
+    articleInfluenceScore: 15.981,
+    link: "google.com",
+  },
 ];
 
 export default journalData;
