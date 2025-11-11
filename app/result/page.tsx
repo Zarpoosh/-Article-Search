@@ -72,15 +72,14 @@ export default function Result() {
   }
 
   return (
-    <div className="min-h-screen sm:flex  dark:bg-black py-8">
-       
+    <div className="min-h-screen bg-zinc-50 dark:bg-black py-8">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* هدر */}
         <div className="mb-8">
           <Link href="/" className="text-fuchsia-500 mb-4 inline-block">
             ← Back to Search
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+          <h1 className="md:text-3xl text-2xl font-bold text-gray-900 dark:text-white mb-2">
             {journal.fullTitle}
           </h1>
           <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
@@ -92,39 +91,63 @@ export default function Result() {
           </div>
         </div>
 
+        {/* محتوای اصلی با لیاوت رسپانسیو */}
+        <div className="flex flex-col sm:flex-row gap-8">
 
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* اطلاعات مقاله */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-              Article Information
-            </h2>
-            <div className="space-y-3">
-              <p><strong>ISSN:</strong> {journal.issn}</p>
-              <p><strong>Rank:</strong> {journal.rank}</p>
-              <p><strong>Category:</strong> {journal.category}</p>
-              <p><strong>Total Cites:</strong> {journal.totalCites.toLocaleString()}</p>
-              <p><strong>Impact Factor:</strong> {journal.journalImpactFactor}</p>
-              <p><strong>Without Self Cites:</strong> {journal.impactFactorWithoutSelfCites}</p>
-              <p><strong>5-Year Impact:</strong> {journal.fiveYearImpactFactor}</p>
-              <p><strong>Immediacy Index:</strong> {journal.immediacyIndex}</p>
-              <p><strong>Eigenfactor Score:</strong> {journal.eigenfactorScore}</p>
-              <p><strong>Article Influence:</strong> {journal.articleInfluenceScore}</p>
-            </div>
-          </div>
-
-         
-        </div>
-      </div>
-
-      {/* QR Code */}
-      <div>
-            <QRCodeGenerator 
+          {/* QR Code - در موبایل پایین، در sm به بالا سمت چپ */}
+          <div className="sm:w-80 order-2 sm:order-1">
+            <QRCodeGenerator
               articleLink={journal.link}
               articleTitle={journal.fullTitle}
             />
           </div>
+          {/* اطلاعات مقاله - همیشه اول از نظر DOM */}
+          <div className="flex-1 order-1 sm:order-2">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+              <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+                Article Information
+              </h2>
+              <div className="space-y-3">
+                <p>
+                  <strong>ISSN:</strong> {journal.issn}
+                </p>
+                <p>
+                  <strong>Rank:</strong> {journal.rank}
+                </p>
+                <p>
+                  <strong>Category:</strong> {journal.category}
+                </p>
+                <p>
+                  <strong>Total Cites:</strong>{" "}
+                  {journal.totalCites.toLocaleString()}
+                </p>
+                <p>
+                  <strong>Impact Factor:</strong> {journal.journalImpactFactor}
+                </p>
+                <p>
+                  <strong>Without Self Cites:</strong>{" "}
+                  {journal.impactFactorWithoutSelfCites}
+                </p>
+                <p>
+                  <strong>5-Year Impact:</strong> {journal.fiveYearImpactFactor}
+                </p>
+                <p>
+                  <strong>Immediacy Index:</strong> {journal.immediacyIndex}
+                </p>
+                <p>
+                  <strong>Eigenfactor Score:</strong> {journal.eigenfactorScore}
+                </p>
+                <p>
+                  <strong>Article Influence:</strong>{" "}
+                  {journal.articleInfluenceScore}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
     </div>
   );
 }
