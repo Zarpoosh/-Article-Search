@@ -1,6 +1,6 @@
 "use client";
 
-import { useState  ,useRef, useEffect} from "react";
+import { useState, useRef, useEffect } from "react";
 
 // نوع داده‌ها
 interface NavItem {
@@ -102,7 +102,9 @@ function DropdownMenu({ item }: { item: NavItem }) {
       >
         {item.label}
         <svg
-          className={`w-2.5 h-2.5 ms-2.5 transition-transform ${isOpen ? "rotate-180" : ""}`}
+          className={`w-2.5 h-2.5 ms-2.5 transition-transform ${
+            isOpen ? "rotate-180" : ""
+          }`}
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -153,6 +155,21 @@ function NavLink({ item }: { item: NavItem }) {
 // Navbar اصلی
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null); // 👈 مرحله ۱
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false); // 👈 مرحله ۲
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
 
   // داده‌ها با ساختار ساده‌تر و قابل‌توسعه‌تر
   const navItems: NavItem[] = [
@@ -181,17 +198,20 @@ function Navbar() {
   ];
 
   return (
-    <nav className="border-gray-800 border-2  ">
+
+    
+    <nav  ref={menuRef} className="border-gray-800 border-2  ">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         {/* لوگو */}
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8"
-            alt="Flowbite Logo"
+            src="/images/logo2.png"
+            className="h-15 w-auto text-white"
+            alt="Mohaghegh Ardabili University"
           />
+
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Flowbite
+            UMA
           </span>
         </a>
 
@@ -223,13 +243,19 @@ function Navbar() {
 
         {/* منوی اصلی */}
         <div
-          className={`${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
+          className={`${
+            isMenuOpen ? "block" : "hidden"
+          } w-full md:block md:w-auto`}
           id="navbar-menu"
         >
           <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ">
             {navItems.map((item) => (
               <li key={item.id}>
-                {item.children ? <DropdownMenu item={item} /> : <NavLink item={item} />}
+                {item.children ? (
+                  <DropdownMenu item={item} />
+                ) : (
+                  <NavLink item={item} />
+                )}
               </li>
             ))}
           </ul>
