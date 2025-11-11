@@ -33,7 +33,7 @@ export default function QRCodeGenerator({
 
   return (
     <div className="text-center rounded-xl shadow-lg p- mt-6">
-      <h2 className="text-xl font-semibold  text-gray-900 dark:text-white">
+      <h2 className="text-lg font-semibold  text-gray-900 dark:text-white">
         Article QR Code
       </h2>
 
@@ -84,29 +84,3 @@ export default function QRCodeGenerator({
 }
 
 
-
-// <a
-// href={articleLink}
-// target="_blank"
-// rel="noopener noreferrer"
-// className="text-fuchsia-500 mx-auto flex hover:text-fuchsia-700  break-all"
-// >
-{/* <svg
-  xmlns="http://www.w3.org/2000/svg"
-  fill="none"
-  viewBox="0 0 24 24"
-  strokeWidth={1.5}
-  stroke="currentColor"
-  className="size-4 mt-auto"
->
-  <path
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
-  />
-</svg> */}
-// <span>
-  
-// articleLink
-// </span>
-// </a>

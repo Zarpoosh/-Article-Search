@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import journalData from "@/data/mockData";
 import QRCodeGenerator from "@/app/components/QRCodeGenerator/QRCodeGenerator";
-import "./result.css"
+import "./result.css";
 interface Journal {
   rank: number;
   fullTitle: string;
@@ -76,12 +76,26 @@ export default function Result() {
       <div className="container mx-auto px-4 max-w-6xl">
         {/* هدر */}
         <div className="mb-8">
-          <Link href="/" className="text-fuchsia-500 mb-4 inline-block">
-            ← Back to Search
+          <Link href="/" className="text-fuchsia-500 mb-4  flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-5 mt-auto"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+              />
+            </svg>
+            Back to Search
           </Link>
-          <h1 className="md:text-3xl text-2xl font-bold text-gray-900 dark:text-white mb-2 break-words">
-  {journal.fullTitle}
-</h1>
+          <h1 className="md:text-4xl text-3xl font-bold text-gray-900 dark:text-white mb-2 ">
+            {journal.fullTitle}
+          </h1>
           <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
             <span>ISSN: {journal.issn}</span>
             <span>•</span>
@@ -92,7 +106,6 @@ export default function Result() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-8">
-
           <div className="sm:w-50 order-2 sm:order-1">
             <QRCodeGenerator
               articleLink={journal.link}
@@ -100,7 +113,7 @@ export default function Result() {
             />
           </div>
           <div className="flex-1 order-1 sm:order-2">
-            <div className=" wrap-break-word background-white-glass border  rounded-xl shadow-lg p-6">
+            <div className=" wrap-break-word background-white-glass dark:border-gray-800 border-2 h-dvh rounded-xl shadow-lg p-6">
               <h2 className="text-xl  font-semibold mb-4 text-gray-900 dark:text-white">
                 Article Information
               </h2>
@@ -141,8 +154,6 @@ export default function Result() {
               </div>
             </div>
           </div>
-
-          
         </div>
       </div>
     </div>
