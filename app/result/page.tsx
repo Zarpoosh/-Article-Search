@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import journalData from "@/data/mockData";
 import QRCodeGenerator from "@/app/components/QRCodeGenerator/QRCodeGenerator";
-
+import "./result.css"
 interface Journal {
   rank: number;
   fullTitle: string;
@@ -79,9 +79,9 @@ export default function Result() {
           <Link href="/" className="text-fuchsia-500 mb-4 inline-block">
             ← Back to Search
           </Link>
-          <h1 className="md:text-3xl text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            {journal.fullTitle}
-          </h1>
+          <h1 className="md:text-3xl text-2xl font-bold text-gray-900 dark:text-white mb-2 break-words">
+  {journal.fullTitle}
+</h1>
           <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
             <span>ISSN: {journal.issn}</span>
             <span>•</span>
@@ -91,20 +91,17 @@ export default function Result() {
           </div>
         </div>
 
-        {/* محتوای اصلی با لیاوت رسپانسیو */}
         <div className="flex flex-col sm:flex-row gap-8">
 
-          {/* QR Code - در موبایل پایین، در sm به بالا سمت چپ */}
-          <div className="sm:w-80 order-2 sm:order-1">
+          <div className="sm:w-50 order-2 sm:order-1">
             <QRCodeGenerator
               articleLink={journal.link}
               articleTitle={journal.fullTitle}
             />
           </div>
-          {/* اطلاعات مقاله - همیشه اول از نظر DOM */}
           <div className="flex-1 order-1 sm:order-2">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
-              <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+            <div className=" wrap-break-word background-white-glass border  rounded-xl shadow-lg p-6">
+              <h2 className="text-xl  font-semibold mb-4 text-gray-900 dark:text-white">
                 Article Information
               </h2>
               <div className="space-y-3">
