@@ -42,7 +42,7 @@ export const journalData = [
     immediacyIndex: 13.03,
     eigenfactorScore: 0.45214,
     articleInfluenceScore: 21.006,
-    link: "google.com",
+    link: "https://translate.google.co.uk/?sl=en&tl=fa&op=translate",
   },
   {
     rank: 4,
