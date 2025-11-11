@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import journalData from "@/data/mockData";
-import QRCodeGenerator from "../components/QRCodeGenerator/QRCodeGenerator";
+import QRCodeGenerator from "@/app/components/QRCodeGenerator/QRCodeGenerator";
 
 interface Journal {
   rank: number;
@@ -19,7 +19,7 @@ interface Journal {
   immediacyIndex: number;
   eigenfactorScore: number;
   articleInfluenceScore: number;
-  link:string;
+  link: string;
 }
 
 export default function Result() {
@@ -29,24 +29,16 @@ export default function Result() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // استفاده از setTimeout برای جلوگیری از synchronous setState
     const timer = setTimeout(() => {
       if (issn) {
         const foundJournal = journalData.find((j) => j.issn === issn);
         setJournal(foundJournal || null);
-        setLoading(false);
-      } else {
-        setLoading(false);
       }
+      setLoading(false);
     }, 0);
 
     return () => clearTimeout(timer);
   }, [issn]);
-
-  // یا روش بهتر: استفاده از useMemo برای محاسبه مقدار
-  // const journal = useMemo(() => {
-  //   return issn ? journalData.find(j => j.issn === issn) || null : null;
-  // }, [issn]);
 
   if (loading) {
     return (
@@ -80,54 +72,59 @@ export default function Result() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black p-8 flex">
-      <QRCodeGenerator 
-          articleLink={journal.link}
-          articleTitle={journal.link}
-        />
-      <div className="max-w-2xl mx-auto">
-        <Link href="/" className="text-fuchsia-500 mb-4 inline-block">
-          ← Back
-        </Link>
-        <h1 className="text-3xl font-bold mb-4">{journal.fullTitle}</h1>
-        <div className=" p-6 rounded-lg shadow">
-          <p>
-            <strong>ISSN:</strong> {journal.issn}
-          </p>
-          <p>
-            <strong>Rank:</strong> {journal.rank}
-          </p>
-          <p>
-            <strong>Category:</strong> {journal.category}
-          </p>
-          <p>
-            <strong>Total Cites:</strong> {journal.totalCites}
-          </p>
-          <p>
-            <strong>Impact Factor:</strong> {journal.journalImpactFactor}
-          </p>
-          <p>
-            <strong>impactFactorWithoutSelfCites:</strong>{" "}
-            {journal.impactFactorWithoutSelfCites}
-          </p>
-          <p>
-            <strong>fiveYearImpactFactor:</strong>{" "}
-            {journal.fiveYearImpactFactor}
-          </p>
-          <p>
-            <strong>immediacyIndex:</strong> {journal.immediacyIndex}
-          </p>
-          <p>
-            <strong>eigenfactorScore:</strong> {journal.eigenfactorScore}
-          </p>
-          <p>
-            <strong>articleInfluenceScore:</strong>{" "}
-            {journal.articleInfluenceScore}
-          </p>
+    <div className="min-h-screen sm:flex  dark:bg-black py-8">
+       
+      <div className="container mx-auto px-4 max-w-6xl">
+        {/* هدر */}
+        <div className="mb-8">
+          <Link href="/" className="text-fuchsia-500 mb-4 inline-block">
+            ← Back to Search
+          </Link>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+            {journal.fullTitle}
+          </h1>
+          <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
+            <span>ISSN: {journal.issn}</span>
+            <span>•</span>
+            <span>Rank: #{journal.rank}</span>
+            <span>•</span>
+            <span>Category: {journal.category}</span>
+          </div>
         </div>
 
+
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* اطلاعات مقاله */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+              Article Information
+            </h2>
+            <div className="space-y-3">
+              <p><strong>ISSN:</strong> {journal.issn}</p>
+              <p><strong>Rank:</strong> {journal.rank}</p>
+              <p><strong>Category:</strong> {journal.category}</p>
+              <p><strong>Total Cites:</strong> {journal.totalCites.toLocaleString()}</p>
+              <p><strong>Impact Factor:</strong> {journal.journalImpactFactor}</p>
+              <p><strong>Without Self Cites:</strong> {journal.impactFactorWithoutSelfCites}</p>
+              <p><strong>5-Year Impact:</strong> {journal.fiveYearImpactFactor}</p>
+              <p><strong>Immediacy Index:</strong> {journal.immediacyIndex}</p>
+              <p><strong>Eigenfactor Score:</strong> {journal.eigenfactorScore}</p>
+              <p><strong>Article Influence:</strong> {journal.articleInfluenceScore}</p>
+            </div>
+          </div>
+
+         
+        </div>
       </div>
-        
+
+      {/* QR Code */}
+      <div>
+            <QRCodeGenerator 
+              articleLink={journal.link}
+              articleTitle={journal.fullTitle}
+            />
+          </div>
     </div>
   );
 }
