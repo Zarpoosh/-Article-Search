@@ -29,6 +29,7 @@ export const journalData = [
     articleInfluenceScore: 29.423,
     link: "google.com",
   },
+  
   {
     rank: 3,
     fullTitle: "LANCET",
