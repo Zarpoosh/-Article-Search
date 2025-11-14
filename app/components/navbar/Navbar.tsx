@@ -98,7 +98,7 @@ function DropdownMenu({ item }: { item: NavItem }) {
     <div ref={menuRef} className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-fuchsia-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-fuchsia-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent transition-colors"
+        className="flex  items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-fuchsia-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-fuchsia-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent transition-colors"
       >
         {item.label}
         <svg
@@ -171,7 +171,6 @@ function Navbar() {
   }, []);
 
 
-  // داده‌ها با ساختار ساده‌تر و قابل‌توسعه‌تر
   const navItems: NavItem[] = [
     { id: "home", label: "Home", href: "#", current: true },
     {
@@ -219,7 +218,7 @@ function Navbar() {
         <button
           type="button"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition-colors"
+          className="inline-flex items-center cursor-pointer p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition-colors"
           aria-controls="navbar-menu"
           aria-expanded={isMenuOpen}
         >

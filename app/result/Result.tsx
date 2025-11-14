@@ -116,12 +116,10 @@ export default function Result() {
           </div>
           <div className="flex-1 order-1 sm:order-2">
             <div className=" wrap-break-word background-white-glass dark:border-gray-800 border-2 h-dvh rounded-xl shadow-lg p-6">
-              <h2 className="text-xl  font-semibold mb-4 text-gray-900 dark:text-white">
+              <h2 className="text-xl rounded-lg text-center bg-gray-800 p-3 font-semibold mb-4 text-gray-900 dark:text-white">
                 Article Information
               </h2>
-              <div className="space-y-3">
                 <JournalInfoList journal={journal} />
-              </div>
             </div>
           </div>
         </div>
