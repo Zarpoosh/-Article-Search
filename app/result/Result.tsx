@@ -6,6 +6,7 @@ import Link from "next/link";
 import journalData from "@/data/mockData";
 import QRCodeGenerator from "@/app/components/QRCodeGenerator/QRCodeGenerator";
 import "./result.css";
+import JournalInfoList from "../components/JournalInfo/JournalInfo";
 interface Journal {
   rank: number;
   fullTitle: string;
@@ -20,6 +21,7 @@ interface Journal {
   eigenfactorScore: number;
   articleInfluenceScore: number;
   link: string;
+  country: string;
 }
 
 export default function Result() {
@@ -118,39 +120,7 @@ export default function Result() {
                 Article Information
               </h2>
               <div className="space-y-3">
-                <p>
-                  <strong>ISSN:</strong> {journal.issn}
-                </p>
-                <p>
-                  <strong>Rank:</strong> {journal.rank}
-                </p>
-                <p>
-                  <strong>Category:</strong> {journal.category}
-                </p>
-                <p>
-                  <strong>Total Cites:</strong>{" "}
-                  {journal.totalCites.toLocaleString()}
-                </p>
-                <p>
-                  <strong>Impact Factor:</strong> {journal.journalImpactFactor}
-                </p>
-                <p>
-                  <strong>Without Self Cites:</strong>{" "}
-                  {journal.impactFactorWithoutSelfCites}
-                </p>
-                <p>
-                  <strong>5-Year Impact:</strong> {journal.fiveYearImpactFactor}
-                </p>
-                <p>
-                  <strong>Immediacy Index:</strong> {journal.immediacyIndex}
-                </p>
-                <p>
-                  <strong>Eigenfactor Score:</strong> {journal.eigenfactorScore}
-                </p>
-                <p>
-                  <strong>Article Influence:</strong>{" "}
-                  {journal.articleInfluenceScore}
-                </p>
+                <JournalInfoList journal={journal} />
               </div>
             </div>
           </div>

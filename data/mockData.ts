@@ -1,6 +1,7 @@
 export const journalData = [
   {
     rank: 1,
+    country:"iran",
     fullTitle: "CAACASCER_DORSAL FOR CLEAR-DARK",
     abbreviatedTitle: "CAACASCER-FLUSI",
     category: "ONCELLORY",
@@ -16,6 +17,7 @@ export const journalData = [
   },
   {
     rank: 2,
+    country:"iran",
     fullTitle: "NEW ENGLAND JOURNAL OF MEDICINE",
     abbreviatedTitle: "NEW ENG J MED",
     category: "MEDICINE, GENERAL & INTERNAL",
@@ -32,6 +34,7 @@ export const journalData = [
   
   {
     rank: 3,
+    country:"iran",
     fullTitle: "LANCET",
     abbreviatedTitle: "LANCET",
     category: "MEDICINE, GENERAL & INTERNAL",
@@ -47,6 +50,7 @@ export const journalData = [
   },
   {
     rank: 4,
+    country:"iran",
     fullTitle: "CHEMICAL REVIEWS",
     abbreviatedTitle: "CHEM REV",
     category: "CHEMISTRY, MULTIDISCIPLINARY",
