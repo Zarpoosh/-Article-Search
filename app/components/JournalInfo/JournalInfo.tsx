@@ -28,10 +28,11 @@ export default function JournalInfoList({ journal }: Props) {
   ];
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 lg:grid lg:grid-cols-2 lg:gap-4">
       {fields.map((item) => (
-        <p key={item.label}>
-          <strong>{item.label}:</strong> {item.value}
+        <p  className="border p-4 rounded-lg  md:grid md:grid-cols-2" key={item.label}>
+          <strong>{item.label} :</strong>
+          <strong>{item.value}</strong> 
         </p>
       ))}
     </div>
