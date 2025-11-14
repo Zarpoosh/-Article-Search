@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <form 
       onSubmit={handleSearch}
-      className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black"
+      className="flex h-150 items-center justify-center bg-zinc-50 font-sans dark:bg-black"
     >
       <input 
         type="text" 
