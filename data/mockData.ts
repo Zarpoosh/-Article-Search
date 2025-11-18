@@ -67,3 +67,4 @@ export const journalData = [
 ];
 
 export default journalData;
+
