@@ -6,9 +6,10 @@ import Link from "next/link";
 import journalData from "@/data/mockData";
 import QRCodeGenerator from "@/app/components/QRCodeGenerator/QRCodeGenerator";
 import "./result.css";
-import JournalInfoList from "../components/JournalInfo/JournalInfo";
+// import JournalInfoList from "../components/JournalInfo/JournalInfo";
 import JournalTable from "../components/JournalInfo/JournalTable";
-interface Journal {
+export interface Journal {
+  year: number;
   rank: number;
   fullTitle: string;
   abbreviatedTitle: string;
@@ -16,14 +17,19 @@ interface Journal {
   issn: string;
   totalCites: number;
   journalImpactFactor: number;
+  impactFactor: number;
   impactFactorWithoutSelfCites: number;
   fiveYearImpactFactor: number;
   immediacyIndex: number;
+  citableItems: number;
+  citableHalfLife: number;
+  citingHalfLife: number;
   eigenfactorScore: number;
   articleInfluenceScore: number;
   link: string;
   country: string;
 }
+
 
 export default function Result() {
   const searchParams = useSearchParams();
@@ -76,7 +82,7 @@ export default function Result() {
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black py-8">
-      <div className="container mx-auto px-4 max-w-6xl">
+      <div className="container mx-auto px-1 max-w-4/5">
         {/* هدر */}
         <div className="mb-8">
           <Link href="/" className="text-fuchsia-500 mb-4  flex">
@@ -109,19 +115,20 @@ export default function Result() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-8">
+          <div className="flex-1 order-1 sm:order-2 w-5/5 ">
+            <div className=" wrap-break-word background-white-glass dark:border-gray-800 border-2 h-auto rounded-xl shadow-lg p-6 ">
+              <h2 className="text-xl rounded-lg text-center bg-gray-800 p-3 font-semibold mb-4 text-gray-900 dark:text-white">
+                Article Information
+              </h2>
+                {/* <JournalInfoList journal={journal} /> */}
+                <JournalTable journals={journalData} />
           <div className="sm:w-50 order-2 sm:order-1">
             <QRCodeGenerator
               articleLink={journal.link}
               articleTitle={journal.fullTitle}
             />
           </div>
-          <div className="flex-1 order-1 sm:order-2">
-            <div className=" wrap-break-word background-white-glass dark:border-gray-800 border-2 h-dvh rounded-xl shadow-lg p-6">
-              <h2 className="text-xl rounded-lg text-center bg-gray-800 p-3 font-semibold mb-4 text-gray-900 dark:text-white">
-                Article Information
-              </h2>
-                {/* <JournalInfoList journal={journal} /> */}
-                <JournalTable journals={journalData} />
+
             </div>
           </div>
         </div>
