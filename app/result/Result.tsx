@@ -7,6 +7,7 @@ import journalData from "@/data/mockData";
 import QRCodeGenerator from "@/app/components/QRCodeGenerator/QRCodeGenerator";
 import "./result.css";
 import JournalInfoList from "../components/JournalInfo/JournalInfo";
+import JournalTable from "../components/JournalInfo/JournalTable";
 interface Journal {
   rank: number;
   fullTitle: string;
@@ -119,7 +120,8 @@ export default function Result() {
               <h2 className="text-xl rounded-lg text-center bg-gray-800 p-3 font-semibold mb-4 text-gray-900 dark:text-white">
                 Article Information
               </h2>
-                <JournalInfoList journal={journal} />
+                {/* <JournalInfoList journal={journal} /> */}
+                <JournalTable journals={journalData} />
             </div>
           </div>
         </div>
