@@ -1,6 +1,6 @@
 "use client";
 
-import { Journal } from "./types/journal";
+import { Journal } from "../../../src/types/journal";
 
 interface Props {
   journal: Journal;
@@ -30,9 +30,12 @@ export default function JournalInfoList({ journal }: Props) {
   return (
     <div className="space-y-3 lg:grid lg:grid-cols-2 lg:gap-4">
       {fields.map((item) => (
-        <p  className="border p-4 rounded-lg  md:grid md:grid-cols-2" key={item.label}>
+        <p
+          className="border p-4 rounded-lg  md:grid md:grid-cols-2"
+          key={item.label}
+        >
           <strong>{item.label} :</strong>
-          <strong>{item.value}</strong> 
+          <strong>{item.value}</strong>
         </p>
       ))}
     </div>
