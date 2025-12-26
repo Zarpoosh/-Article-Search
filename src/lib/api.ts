@@ -1,7 +1,9 @@
-const API_BASE = "http://127.0.0.1:8000/docs";
+import { JournalResponse } from "../types/journal";
 
-export async function fetchJournal(issn: string) {
-  const res = await fetch(`${API_BASE}/journal/${issn}`);
+const API_BASE = "http://127.0.0.1:8000";
+
+export async function fetchJournal(issn: string): Promise<JournalResponse> {
+  const res = await fetch(`${API_BASE}/journals/${issn}`);
 
   if (!res.ok) {
     throw new Error("Journal not found");

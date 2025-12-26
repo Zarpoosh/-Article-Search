@@ -139,39 +139,92 @@
 // }
 
 
+
+
+// app/result/Result.tsx
 "use client";
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { fetchJournal } from "@/src/lib/api";
-import type { Journal } from "@/src/types/journal";
-import JournalTable from "@/app/components/JournalInfo/JournalTable";
+import type { JournalResponse , JournalRow} from "@/src/types/journal";
 
 export default function ResultPage() {
   const searchParams = useSearchParams();
   const issn = searchParams.get("issn");
 
-  const [data, setData] = useState<Journal | null>(null);
+  const [data, setData] = useState<JournalResponse | null>(null);
+  const [rows, setRows] = useState<JournalRow[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!issn) return;
 
     fetchJournal(issn)
-      .then(setData)
+      .then((res) => {
+        setData(res);
+
+        const flattened = Object.values(res.by_year).flatMap((items) =>
+          items.map((item) => ({
+            ...item
+          }))
+        );
+        
+
+        setRows(flattened);
+      })
       .catch(() => setData(null))
       .finally(() => setLoading(false));
   }, [issn]);
 
-  if (loading) return <p className="p-6">Loading...</p>;
-  if (!data) return <p className="p-6">Journal not found</p>;
+// !----------------------------------------
+  console.log("ISSN FROM URL:", issn);
+
+
+  if (loading) return <p className="p-6">در حال دریافت اطلاعات...</p>;
+  if (!data) return <p className="p-6">یافت نشد ❌</p>;
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold">{data.journal_name}</h1>
-      <p className="text-gray-600 mb-6">ISSN: {data.issn}</p>
+    <div className="p-6 overflow-x-auto">
+      <h1 className="text-2xl font-bold mb-2">{data.metadata.journal_name}</h1>
+      <p className="mb-4 text-neutral-300">ISSN: {data.metadata.issns[0]}</p>
 
-      <JournalTable journals={data.years} />
+
+      
+
+      <table className="min-w-full border text-sm">
+        <thead className="bg-fuchsia-700 text-xl text-white">
+          <tr >
+            <th>Year</th>
+            <th>ISSN</th>
+            <th>JIF</th>
+            <th>5Y IF</th>
+            <th>Total Citations</th>
+            <th>Rank</th>
+            <th>RankCategory</th>
+            <th>Category</th>
+            <th>ArticleInfluenceScore</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i} className="border-t text-center hover:bg-neutral-300 hover:text-neutral-900 hover:cursor-pointer ">
+              <td className="p-4">{row.year}</td>
+              <td className="p-4">{row.issn ?? "-"}</td>
+              <td className="p-4">{row.jif ?? "-"}</td>
+              <td className="p-4">{row.five_year_jif ?? "-"}</td>
+              <td className="p-4">{row.total_citations ?? "-"}</td>
+              <td className="p-4">{row.rank ?? "-"}</td>
+              <td className="p-4">{row.rank_category ?? "-"}</td>
+              <td className="p-4">{row.category ?? "-"}</td>
+              <td className="p-4">{row.article_influence_score ?? "-"}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+
+
     </div>
   );
 }
