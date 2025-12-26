@@ -1,0 +1,70 @@
+[33md5fce08397ca9c78e43d5e743d771792d9ebf1bd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m reset all files witgh new api
+ app/components/JournalInfo/JournalInfo.tsx  |       9 [32m+[m[31m-[m
+ app/components/JournalInfo/JournalTable.tsx |     138 [32m+[m[31m-[m
+ app/components/JournalInfo/types/journal.ts |      21 [31m-[m
+ app/result/Result.tsx                       |     285 [32m+[m[31m-[m
+ data/jcr_combined.json                      | 5006962 [32m+++++++++++++++++++++++++++++++[m
+ data/mockData.ts                            | 1992794 [32m+++++++++++[m[31m-[m
+ src/lib/api.ts                              |      11 [32m+[m
+ src/types/journal.ts                        |      27 [32m+[m
+ 8 files changed, 6999972 insertions(+), 275 deletions(-)
+[33m3450540c44e39819f5ca819e7615527b05378636[m[33m ([m[1;31morigin/main[m[33m)[m responsivation
+ jcr-api.zip | Bin [31m29049733[m -> [32m0[m bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+[33maf1443cfedb2ff4150355b0677bbb3ed0c3689c6[m responsivation
+ app/components/JournalInfo/JournalTable.tsx | 73 [32m++++++++++++++[m[31m----------------------[m
+ app/components/JournalInfo/types/journal.ts | 36 [32m++++++++++[m[31m--------[m
+ app/result/Result.tsx                       | 27 [32m++++++++[m[31m-----[m
+ data/mockData.ts                            | 30 [32m++++++++++++[m[31m---[m
+ 4 files changed, 90 insertions(+), 76 deletions(-)
+[33m2044f86ab96fb322cebfc99e49d9105bd1a5c6d4[m change the ui to tabel
+ $TXRAJNL.DAT                                | Bin [31m0[m -> [32m1048576[m bytes
+ app/components/JournalInfo/JournalTable.tsx |  75 [32m+++++++++++++++++++++++++++++++++++[m
+ app/result/Result.tsx                       |   4 [32m+[m[31m-[m
+ jcr-api.zip                                 | Bin [31m0[m -> [32m29049733[m bytes
+ 4 files changed, 78 insertions(+), 1 deletion(-)
+[33m6f5c2ce257592047ee388aad71de36818b8275a3[m nothing
+ data/mockData.ts | 1 [32m+[m
+ 1 file changed, 1 insertion(+)
+[33mbc1ceb5c63edcef1ad3d49c0382fb73053ac11fa[m change icon
+ app/components/QRCodeGenerator/QRCodeGenerator.tsx | 40 [32m+++++++++++++++++++[m[31m----------[m
+ 1 file changed, 26 insertions(+), 14 deletions(-)
+[33md993ebe451f0f7b8a2051881bafd7469ded4dd43[m add backtotop componnet
+ app/components/BackToTop.tsx     | 61 [32m+++++++++++++++++++++++++++++++++++++++++++++++[m
+ app/components/navbar/Navbar.tsx |  2 [32m+[m[31m-[m
+ app/layout.tsx                   |  2 [32m++[m
+ app/page.tsx                     |  2 [32m+[m[31m-[m
+ 4 files changed, 65 insertions(+), 2 deletions(-)
+[33m152f6fc6d77db3605ae60bffa309b9f96247a151[m add style to info
+ app/components/JournalInfo/JournalInfo.tsx | 7 [32m++++[m[31m---[m
+ app/components/navbar/Navbar.tsx           | 5 [32m++[m[31m---[m
+ app/result/Result.tsx                      | 4 [32m+[m[31m---[m
+ 3 files changed, 7 insertions(+), 9 deletions(-)
+[33m3ece1f3abc9ee4a64876d002623bee19a59ccd8b[m add jurnalinfo component
+ app/components/JournalInfo/JournalInfo.tsx  | 39 [32m++++++++++++++++++++++++++++++++++++[m
+ app/components/JournalInfo/types/journal.ts | 17 [32m++++++++++++++++[m
+ app/result/Result.tsx                       | 36 [32m+++[m[31m------------------------------[m
+ app/result/result.css                       |  6 [31m------[m
+ data/mockData.ts                            |  4 [32m++++[m
+ 5 files changed, 63 insertions(+), 39 deletions(-)
+[33m8db51cc99fe7908c0551b37c5f98e7d34e0042fd[m nothing
+ data/mockData.ts | 1 [32m+[m
+ 1 file changed, 1 insertion(+)
+[33m62aeec399d8064133609c36aa34b96b838f77efd[m fix use [200~useSearchParams in result page
+ app/result/Result.tsx | 161 [32m+++++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ app/result/page.tsx   | 164 [32m+++[m[31m------------------------------------------------------[m
+ 2 files changed, 168 insertions(+), 157 deletions(-)
+[33m4e3c1e5b149eb3dce1caed412fb519e752f7a705[m add icon & change tit;le
+ app/layout.tsx     |   2 [32m+[m[31m-[m
+ public/favicon.ico | Bin [31m0[m -> [32m57144[m bytes
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+[33m810e29c8966de29f1feeafd96c306bde9fb20717[m fix useref to navbar
+ app/components/navbar/Navbar.tsx |  44 [32m+++++++++++++++++++++++++++++++++++[m[31m---------[m
+ public/file.svg                  |   1 [31m-[m
+ public/globe.svg                 |   1 [31m-[m
+ public/images/logo.png           | Bin [31m0[m -> [32m60874[m bytes
+ public/images/logo2.png          | Bin [31m0[m -> [32m57144[m bytes
+ public/next.svg                  |   1 [31m-[m
+ public/vercel.svg                |   1 [31m-[m
+ public/window.svg                |   1 [31m-[m
+ 8 files changed, 35 insertions(+), 14 deletions(-)
