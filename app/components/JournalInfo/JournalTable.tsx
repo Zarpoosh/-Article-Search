@@ -1,67 +1,44 @@
 "use client";
 
-import { useState } from "react";
-import { Journal, JournalRow } from "../../../src/types/journal";
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const [rows, setRows] = useState<JournalRow[]>([]);
-
+import React from "react";
+import type { JournalRow } from "@/src/types/journal";
 
 interface Props {
-  journals: Journal[];
+  rows: JournalRow[];
 }
 
-export default function JournalTable({ journals }: Props) {
-
-  
+export default function JournalTable({ rows }: Props) {
   return (
-    <div className="overflow-x-auto">
-      {/* <table className="min-w-full border text-sm">
-        <thead className="bg-gray-800 text-white">
+    <div className="overflow-x-auto w-full">
+      <table className="min-w-full text-sm">
+        <thead className="bg-fuchsia-700 text-white text-xl">
           <tr>
             <th>Year</th>
-            <th>Total Cites</th>
-            <th>JIF</th>
-            <th>5Y IF</th>
-            <th>IF (No Self)</th>
-            <th>Immediacy</th>
-            <th>Eigenfactor</th>
-            <th>Article Influence</th>
-          </tr>
-        </thead>
-        <tbody>
-          {journals.map((y) => (
-            <tr key={y.year} className="text-center border-t">
-              <td>{y.year}</td>
-              <td>{y.metrics.total_citations ?? "-"}</td>
-              <td>{y.metrics.jif ?? "-"}</td>
-              <td>{y.metrics.five_year_jif ?? "-"}</td>
-              <td>{y.metrics.jif_without_self_cites ?? "-"}</td>
-              <td>{y.metrics.immediacy_index ?? "-"}</td>
-              <td>{y.metrics.eigenfactor_score ?? "-"}</td>
-              <td>{y.metrics.article_influence_score ?? "-"}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
-
-<table className="min-w-full border text-sm">
-        <thead className="bg-gray-800 text-white">
-          <tr>
-            <th>Year</th>
+            <th>ISSN</th>
             <th>JIF</th>
             <th>5Y IF</th>
             <th>Total Citations</th>
+            <th>Rank</th>
+            <th>RankCategory</th>
             <th>Category</th>
+            <th>ArticleInfluenceScore</th>
           </tr>
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} className="border-t text-center">
-              <td>{row.year}</td>
-              <td>{row.jif ?? "-"}</td>
-              <td>{row.five_year_jif ?? "-"}</td>
-              <td>{row.total_citations ?? "-"}</td>
-              <td>{row.category ?? "-"}</td>
+            <tr
+              key={i}
+              className="border-t text-center hover:bg-neutral-300 hover:text-neutral-900 hover:cursor-pointer"
+            >
+              <td className="p-4">{row.year}</td>
+              <td className="p-4">{row.issn ?? "-"}</td>
+              <td className="p-4">{row.jif ?? "-"}</td>
+              <td className="p-4">{row.five_year_jif ?? "-"}</td>
+              <td className="p-4">{row.total_citations ?? "-"}</td>
+              <td className="p-4">{row.rank ?? "-"}</td>
+              <td className="p-4">{row.rank_category ?? "-"}</td>
+              <td className="p-4">{row.category ?? "-"}</td>
+              <td className="p-4">{row.article_influence_score ?? "-"}</td>
             </tr>
           ))}
         </tbody>
