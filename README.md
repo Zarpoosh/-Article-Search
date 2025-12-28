@@ -1,3 +1,29 @@
+# Contributing to JCR-API Project 🚀
+
+سلام و خوش آمدید! 🎉  
+خیلی خوشحالیم که می‌خوای به پروژه ما کمک کنی. قبل از اینکه شروع کنی، لطفاً چند نکته ساده رو رعایت کن تا همه چیز مرتب و حرفه‌ای باشه.
+
+---
+
+## 1️⃣ Fork the Repository
+اگر می‌خوای تغییر بدی یا feature جدید اضافه کنی، اول ریپوی ما رو **Fork** کن:
+
+1. بالای صفحه ریپوی ما در GitHub روی دکمه **Fork** کلیک کن.
+2. ریپو یه نسخه شخصی در اکانت خودت ساخته می‌شه.
+3. این نسخه شخصی، جایی هست که می‌تونی بدون نگرانی تغییرات بدی.
+
+---
+
+## 2️⃣ Clone Your Fork
+نسخه فورک شده رو روی سیستم خودت کپی کن:
+
+```bash
+
+
+git clone https://github.com/YOUR-USERNAME/jcr-api.git
+cd jcr-api
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
